@@ -37,7 +37,7 @@ def index():
 
     message.attach(MIMEText(body, 'plain'))
 
-    pdfname = 'rank-test.pdf'
+    pdfname = '/rank-test.pdf'
 
     binary_pdf = open(pdfname, 'rb')
 
