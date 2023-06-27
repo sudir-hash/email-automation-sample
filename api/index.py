@@ -7,11 +7,11 @@ from flask import Flask, render_template, Response, request, redirect
 import os.path
 
 app = Flask(__name__)
-@app.route('/',methods=["GET"])
-def start():
-    return "hi"
+# @app.route('/',methods=["GET"])
+# def start():
+#     return "hi"
 
-@app.route('/<email>',methods=["GET"])
+@app.route('/',methods=["GET"])
 def index(email):
 
     body = '''Hello,
@@ -27,7 +27,7 @@ def index(email):
     # copy the password generated here
     password = 'tiecqtzjasbhectc'
     # put the email of the receiver here
-    receiver = email
+    receiver = "thalaprakash2000@gmail.com"
 
     #Setup the MIME
     message = MIMEMultipart()
