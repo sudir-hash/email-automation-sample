@@ -40,6 +40,7 @@ def index():
     __location__ = os.path.realpath(
     os.path.join(os.getcwd(), os.path.dirname(__file__)))
     pdfname = open(os.path.join(__location__, 'rank-test.pdf'))
+    print(pdfname)
     # pdfname = '/api/rank-test.pdf'
 
     binary_pdf = open(pdfname, 'rb')
