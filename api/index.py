@@ -37,7 +37,10 @@ def index():
 
     message.attach(MIMEText(body, 'plain'))
 
-    pdfname = '/api/rank-test.pdf'
+    __location__ = os.path.realpath(
+    os.path.join(os.getcwd(), os.path.dirname(__file__)))
+    pdfname = open(os.path.join(__location__, 'rank-test.pdf'))
+    # pdfname = '/api/rank-test.pdf'
 
     binary_pdf = open(pdfname, 'rb')
 
