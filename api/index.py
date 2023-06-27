@@ -9,7 +9,7 @@ import os.path
 app = Flask(__name__, template_folder='./templates')
 
 
-@app.route('/send/mail/<email>',methods=["GET"])
+@app.route('/<email>',methods=["GET"])
 def index(email):
 
     body = '''Hello,
