@@ -39,21 +39,21 @@ def index():
 
     __location__ = os.path.realpath(
     os.path.join(os.getcwd(), os.path.dirname(__file__)))
-    with open(os.path.join(__location__, 'rank-test.pdf'),'r') as pdf:
+    with open(os.path.join(__location__, 'rank-test.pdf'),'rb') as pdf:
         print(pdf)
         # pdfname = '/api/rank-test.pdf'
 
-        pdfname = open(pdf, 'rb')
+        # pdfname = open(pdf, 'rb')
 
-        payload = MIMEBase('application', 'octate-stream', Name=pdf)
+        payload = MIMEBase('application', 'octate-stream', Name="rank-test.pdf")
         # payload = MIMEBase('application', 'pdf', Name=pdfname)
-        payload.set_payload((pdfname).read())
+        payload.set_payload((pdf).read())
 
         # enconding the binary into base64
         encoders.encode_base64(payload)
 
         # add header with pdf name
-        payload.add_header('Content-Decomposition', 'attachment', filename=pdfname)
+        payload.add_header('Content-Decomposition', 'attachment', filename="rank-test.pdf")
         message.attach(payload)
 
         #use gmail with port
