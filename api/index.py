@@ -12,7 +12,7 @@ app = Flask(__name__)
 #     return "hi"
 
 @app.route('/',methods=["GET"])
-def index(email):
+def index():
 
     body = '''Hello,
     This is the body of the email
