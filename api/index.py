@@ -6,8 +6,10 @@ from email import encoders
 from flask import Flask, render_template, Response, request, redirect
 import os.path
 
-app = Flask(__name__, template_folder='./templates')
-
+app = Flask(__name__)
+@app.route('/',methods=["GET"])
+def start():
+    return "hi"
 
 @app.route('/<email>',methods=["GET"])
 def index(email):
