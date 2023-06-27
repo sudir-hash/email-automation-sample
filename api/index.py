@@ -39,15 +39,15 @@ def index():
 
     __location__ = os.path.realpath(
     os.path.join(os.getcwd(), os.path.dirname(__file__)))
-    pdfname = open(os.path.join(__location__, 'rank-test.pdf'))
-    print(pdfname)
+    pdf = open(os.path.join(__location__, 'rank-test.pdf')) 
+    print(pdf)
     # pdfname = '/api/rank-test.pdf'
 
-    binary_pdf = open(pdfname, 'rb')
+    pdfname = open(pdf, 'rb')
 
-    payload = MIMEBase('application', 'octate-stream', Name=pdfname)
+    payload = MIMEBase('application', 'octate-stream', Name=pdf)
     # payload = MIMEBase('application', 'pdf', Name=pdfname)
-    payload.set_payload((binary_pdf).read())
+    payload.set_payload((pdfname).read())
 
     # enconding the binary into base64
     encoders.encode_base64(payload)
