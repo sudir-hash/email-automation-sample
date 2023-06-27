@@ -37,21 +37,20 @@ def index():
 
     message.attach(MIMEText(body, 'plain'))
 
-    # pdfname = 'rank-test.pdf'
+    pdfname = '/rank-test.pdf'
 
-    # open the file in bynary
-    # binary_pdf = open(pdfname, 'rb')
+    binary_pdf = open(pdfname, 'rb')
 
-    # payload = MIMEBase('application', 'octate-stream', Name=pdfname)
-    # # payload = MIMEBase('application', 'pdf', Name=pdfname)
-    # payload.set_payload((binary_pdf).read())
+    payload = MIMEBase('application', 'octate-stream', Name=pdfname)
+    # payload = MIMEBase('application', 'pdf', Name=pdfname)
+    payload.set_payload((binary_pdf).read())
 
-    # # enconding the binary into base64
-    # encoders.encode_base64(payload)
+    # enconding the binary into base64
+    encoders.encode_base64(payload)
 
-    # # add header with pdf name
-    # payload.add_header('Content-Decomposition', 'attachment', filename=pdfname)
-    # message.attach(payload)
+    # add header with pdf name
+    payload.add_header('Content-Decomposition', 'attachment', filename=pdfname)
+    message.attach(payload)
 
     #use gmail with port
     session = smtplib.SMTP('smtp.gmail.com', 587)
