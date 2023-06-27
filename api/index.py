@@ -39,36 +39,36 @@ def index():
 
     __location__ = os.path.realpath(
     os.path.join(os.getcwd(), os.path.dirname(__file__)))
-    pdf = open(os.path.join(__location__, 'rank-test.pdf')) 
-    print(pdf)
-    # pdfname = '/api/rank-test.pdf'
+    with open(os.path.join(__location__, 'rank-test.pdf'),'r') as pdf:
+        print(pdf)
+        # pdfname = '/api/rank-test.pdf'
 
-    pdfname = open(pdf, 'rb')
+        pdfname = open(pdf, 'rb')
 
-    payload = MIMEBase('application', 'octate-stream', Name=pdf)
-    # payload = MIMEBase('application', 'pdf', Name=pdfname)
-    payload.set_payload((pdfname).read())
+        payload = MIMEBase('application', 'octate-stream', Name=pdf)
+        # payload = MIMEBase('application', 'pdf', Name=pdfname)
+        payload.set_payload((pdfname).read())
 
-    # enconding the binary into base64
-    encoders.encode_base64(payload)
+        # enconding the binary into base64
+        encoders.encode_base64(payload)
 
-    # add header with pdf name
-    payload.add_header('Content-Decomposition', 'attachment', filename=pdfname)
-    message.attach(payload)
+        # add header with pdf name
+        payload.add_header('Content-Decomposition', 'attachment', filename=pdfname)
+        message.attach(payload)
 
-    #use gmail with port
-    session = smtplib.SMTP('smtp.gmail.com', 587)
+        #use gmail with port
+        session = smtplib.SMTP('smtp.gmail.com', 587)
 
-    #enable security
-    session.starttls()
+        #enable security
+        session.starttls()
 
-    #login with mail_id and password
-    session.login(sender, password)
+        #login with mail_id and password
+        session.login(sender, password)
 
-    text = message.as_string()
-    session.sendmail(sender, receiver, text)
-    session.quit()
-    print('Mail Sent')
+        text = message.as_string()
+        session.sendmail(sender, receiver, text)
+        session.quit()
+        print('Mail Sent')
 
     return "true"
 
