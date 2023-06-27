@@ -11,8 +11,8 @@ app = Flask(__name__)
 # def start():
 #     return "hi"
 
-@app.route('/',methods=["GET"])
-def index():
+@app.route('/send/mail/<email>',methods=["GET"])
+def index(email):
 
     body = '''Hello,
     This is the body of the email
@@ -27,7 +27,7 @@ def index():
     # copy the password generated here
     password = 'tiecqtzjasbhectc'
     # put the email of the receiver here
-    receiver = "thalaprakash2000@gmail.com"
+    receiver = email
 
     #Setup the MIME
     message = MIMEMultipart()
