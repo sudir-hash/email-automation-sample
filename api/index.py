@@ -11,8 +11,10 @@ app = Flask(__name__)
 # def start():
 #     return "hi"
 
-@app.route('/send/mail/<email>/<filename>',methods=["GET"])
-def index(email,filenam):
+
+
+@app.route('/send/mail/<email>/<filena>',methods=["GET"])
+def index(email,filena):
 
     body = '''Hello,
     This is the body of the email
@@ -36,20 +38,16 @@ def index(email,filenam):
     message['Subject'] = 'This email has an attacment, a pdf file'
 
     message.attach(MIMEText(body, 'plain'))
-
-    filenam = filenam+".pdf"
-
+    filen = filena+".pdf"
     __location__ = os.path.realpath(
     os.path.join(os.getcwd(), os.path.dirname(__file__)))
-    with open(os.path.join(__location__,filenam),'rb') as pdf:
+    with open(os.path.join(__location__, filen),'rb') as pdf:
         print(pdf)
         # pdfname = '/api/rank-test.pdf'
 
         # pdfname = open(pdf, 'rb')
-
         
-
-        payload = MIMEBase('application', 'octate-stream', Name=filenam)
+        payload = MIMEBase('application', 'octate-stream', Name=filen)
         # payload = MIMEBase('application', 'pdf', Name=pdfname)
         payload.set_payload((pdf).read())
 
@@ -57,7 +55,7 @@ def index(email,filenam):
         encoders.encode_base64(payload)
         
         # add header with pdf name
-        payload.add_header('Content-Decomposition', 'attachment', filename=filenam)
+        payload.add_header('Content-Decomposition', 'attachment', filename=filen)
         message.attach(payload)
 
         #use gmail with port
