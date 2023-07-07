@@ -27,10 +27,10 @@ app = Flask(__name__)
 @app.route('/send/mail/<email>/<filena>/<username>',methods=["GET"])
 def index(email,filena,username):
 
-    body = "Hello "+ username + "\n"
+    body = "Hello  "+ username + "\n"
     body = body +'''This is the body of the email
     sicerely yours
-    G.G.
+    G.G.      
     '''
     # put your email here
     sender = 'yuvibro1211@gmail.com'
