@@ -19,13 +19,33 @@ def index(email,filena,username):
     sicerely yours
     G.G.      
     '''
+    body =  f'''Hello {username.upper()}
+
+    You have sucessfully registered for KERNEL'23.
+    Please make sure to reach the campus before 9 AM
+
+    Note
+    * Come in proper formal dress code(No entry if not followed).
+    * College bus will be available from all parts of the city.
+    * Producing ID card is mandatory
+    * Breakfast and Lunch will be provided within the campus.
+
+    To know about the events visit: https://kernel-2k23.vercel.app/kernel.html
+    For any further clarification contact us at kernel23symposium@gmail.com
+
+    Waiting to see you on occasion.
+
+    Warm Regards
+    KERNEL'23
+    Registration Team Members
+     '''
     # put your email here
-    sender = 'yuvibro1211@gmail.com'
+    sender = 'kernel23symposium@gmail.com'
     # get the password in the gmail (manage your google account, click on the avatar on the right)
     # then go to security (right) and app password (center)
     # insert the password and then choose mail and this computer and then generate
     # copy the password generated here
-    password = 'tiecqtzjasbhectc'
+    password = 'rweriuwugqodjdme'
     # put the email of the receiver here
     receiver = email
 
@@ -33,7 +53,7 @@ def index(email,filena,username):
     message = MIMEMultipart()
     message['From'] = sender
     message['To'] = receiver
-    message['Subject'] = 'This email has an attacment, a pdf file'
+    message['Subject'] = "Successfully registered"
 
     message.attach(MIMEText(body, 'plain'))
     filen = filena+".pdf"
