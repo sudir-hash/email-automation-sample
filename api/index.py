@@ -8,7 +8,9 @@ import os.path
 
 
 app = Flask(__name__)
-
+@app.route('/',methods=["GET"])
+def home():
+    return "hello"
 
 
 @app.route('/send/mail/<email>/<filena>/<username>',methods=["GET"])
