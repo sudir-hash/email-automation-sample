@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>QR Code Scan</title>
+</head>
+<body>
+    <h1>QR Code Scan</h1>
+    <img src="{{ url_for('qr_scan') }}" style="border: 2px solid red;">
+    <br>
+    {% if qr_data %}
+    <p>Decoded QR Code Data:</p>
+    <p>{{ qr_data }}</p>
+    {% endif %}
+    <br>
+    <a href="{{ url_for('index') }}">Back</a>
+</body>
+</html>

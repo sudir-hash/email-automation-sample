@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Enter Mobile Number</title>
+</head>
+<body>
+    <h1>Enter Your Mobile Number</h1>
+    <form action="{{ url_for('submit_mobile') }}" method="post">
+        <label for="mobile">Mobile Number:</label>
+        <input type="text" id="mobile" name="mobile" required pattern="[0-9]{10}" title="Enter a valid 10-digit mobile number" maxlength="10">
+        <br>
+        <input type="submit" value="Submit">
+    </form>
+</body>
+</html>

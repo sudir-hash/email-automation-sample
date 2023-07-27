@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Details</title>
+</head>
+<body>
+    <h1>Details</h1>
+    {% if df1 %}
+    <p>Number found. Details:</p>
+    {{ df1 | safe }}
+    <br>
+    <a href="{{ url_for('qr_scan') }}">Scan QR Code</a>
+    {% else %}
+    <p>Number not found in the DataFrame.</p>
+    {% endif %}
+    <br>
+    <a href="{{ url_for('home') }}">Back</a>
+</body>
+</html>

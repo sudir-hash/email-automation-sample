@@ -1,4 +1,6 @@
 Flask==2.2.2
 Flask-Cors==4.0.0
-py-smtp
-secure-smtplib
+pandas
+google-api-python-client
+jinja2
+google-oauth2-tool

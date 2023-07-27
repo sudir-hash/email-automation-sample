@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Scanner</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html5-qrcode/2.3.8/html5-qrcode.min.js" integrity="sha512-r6rDA7W6ZeQhvl8S7yRVQUKVHdexq+GAlNkNNqVC7YyIV+NwqCTJe2hDWCiffTyRNOeGEzRRJ9ifvRm/HCzGYg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>  </head>
+  <body>
+    <div id="qr-reader" style="width: 500px"></div>
+    <div id="qr-reader-results"></div>
+    <script>
+      var resultContainer = document.getElementById("qr-reader-results");
+      var lastResult,
+        countResults = 0;
+
+       //event_id is passed from the server
+      var continueScanning=true;
+
+      function onScanSuccess(decodedText, decodedResult) {
+        // if (decodedText !== lastResult ) {
+          if(continueScanning==false)return;
+          // ++countResults;
+          // lastResult = decodedText;
+          // Handle on success condition with the decoded message.
+          console.log(`Scan result ${decodedText}` );
+          window.location.href=`/get_number/${decodedText}`;
+          // if(event_id==0){
+            // var phoneNo=prompt('Enter your phone number');
+            // if(phoneNo==null){
+            //     return;
+            // }
+            continueScanning=false;
+            // fetch(`http://localhost:5000/register`,{
+            //     method:'POST',
+            //     headers:{
+            //         'Content-Type':'application/json'
+            //     },
+            //     body:JSON.stringify({
+            //         qr_code:decodedText,
+            //         phn_no:phoneNo
+            //     }),
+            //     xhrFields: {
+            //         withCredentials: true
+            //     }
+            // }).then(res=>res.json())
+            // .then(data=>{
+            //     console.log(data);
+            //     if(data.status==200){
+            //         alert('Successfully scanned and registered');
+            //     }else{
+            //         alert('Error while perfoming the action');
+            //     }
+            // }).catch(error=>{
+            //     console.log(error);
+            //     continueScanning=true;
+            // });
+          // }
+          // else{
+          //   console.log(decodedText,event_id);
+          //   continueScanning=false;
+          //   fetch(`http://localhost:5000/updateAttendance`,{
+          //       method:'POST',
+          //       headers:{
+          //           'Content-Type':'application/json'
+          //       },
+
+          //       body:JSON.stringify({
+          //           qr_code:`${decodedText}`,
+          //           event:`event${event_id}`
+          //       })
+          //   }).then(res=>res.json())
+          //   .then(data=>{
+          //       console.log(data);
+          //       if(data.status==200){
+          //           alert('Successfully scanned and registered');
+          //       }else{
+          //           alert('Error while perfoming the action');
+          //       }
+          //   }).catch(error=>{
+          //       console.log(error);
+          //       continueScanning=true;
+          //   });
+          // }
+        
+        
+          // }
+        // else{
+        //     alert('already scanned');
+        // }
+      }
+
+      var html5QrcodeScanner = new Html5QrcodeScanner("qr-reader", {
+        fps: 10,
+        qrbox: 250,
+      });
+      html5QrcodeScanner.render(onScanSuccess);
+    </script>
+  </body>
+</html>
